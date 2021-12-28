@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Observer</title>
+</head>
+<body>
+  
+
+  <style>
+    .container{
+      display: flex;
+    }
+    .container>div{
+      flex: 1 1 50%;
+    }
+    .box{
+      width: 150px;
+      height: 150px;
+      box-sizing: border-box;
+      display: inline-block;
+    }
+    .text{
+      caret-color: red;
+    }
+  </style>
+
+  <div class="container">
+    <div class="box"></div>
+    <div class="text" contenteditable>Text</div>
+  </div>
+  
+  <script>
+    const box = document.querySelector(".box");
+    const container = document.querySelector(".container");
+
+    const observer = new ResizeObserver(entries => {
+      console.log(entries)
+      const boxElement = entries[0]
+      const isSmall = boxElement.contentRect.width < 250
+      boxElement.target.style.backgroundColor = isSmall ? "blue" : "red";
+      boxElement.target.style.border = `1px solid ${isSmall ? "red" : "blue"}`
+    })
+    observer.observe(box);
+  </script>
+</body>
+</html>
