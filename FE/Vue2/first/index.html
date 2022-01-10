@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  number의 값을 1씩 증가시키려고 할 때
+
+    <div id="app-computed-bad">
+      <section>
+        <h3>Computed의 안 좋은 예</h3>
+        <button @click="number++"> Click Me For Update Number</button> 
+        <br/>
+        number : {{number}} <br/>
+        {{calcNumber}} <br/>
+      </section>
+    </div>
+
+    <div id="app-computed-good">
+      <section>
+        <h3>Computed의 좋은 예</h3>
+        <button @click="number++"> Click Me For Update Number</button> 
+        <br/>
+        number : {{number}} <br/>
+        {{double}}
+      </section>
+    </div>
+
+    <div id="app-methods-bad">
+      <section>
+        <h3>methods Bad Case</h3>
+        <button @click="number++"> Click Me For Update Number</button>
+        <button @click="msg += '아'"> Click Me For Add Msg</button>
+        <br/>
+        number : {{number}}<br/>
+        double : {{double}} : 자동 계산 되야 함
+        <br/>  
+        methods : {{triple()}}    : 작동이 안 되야 함
+        <br/>
+        <div>
+          explan : <span ref="explan">{{msg}}</span>
+        </div>
+      </section>
+    </div>
+
+    <div id="app-methods-good">
+      <section>
+        <h3>methods Goods</h3>
+        <button @click="number++"> Click Me For Update Number</button> 
+        <br/>
+        number : {{number}} <br/>
+        Msg : {{calcNumber()}}
+      </section>
+    </div>
+
+  <script>
+    let cnt = 0;
+  </script>
+
+  <script>
+    //computed Bad Case
+    const vue_computed_bad = new Vue({
+      el:"#app-computed-bad",
+      data: {
+        number: 1,
+      },
+      computed: {
+        calcNumber: function(){
+          console.log("computed bad hi");
+          return this.number++;
+        }
+      },
+    })
+
+    //computed Good Case
+    const vue_computed_good = new Vue({
+      el:"#app-computed-good",
+      data: {
+        number: 1,
+      },
+      computed: {
+        double: function(){
+          console.log("computed good hi");
+          return this.number * 2;
+        }
+      },
+    })
+
+    // methods-bad
+    const vue_methods_bad = new Vue({
+      el: "#app-methods-bad",
+      data: {
+        number: 1,
+        msg:'',
+        안내문구 : '하지만 아무거나 변경해도 관계없는 number 데이터를 참고하는 메소드가 계속 호출 된다'
+      },
+      computed:{
+        double: function(){
+          return this.number * 2;
+        },
+      },
+      methods: {
+        triple: function(){
+          this.$nextTick(() => {
+
+            (cnt % 11) == 0 && (this.$refs.explan.innerText = "");
+            this.$refs.explan.innerText += this.안내문구.split(' ')[cnt % 11] + '　';
+            console.log("triple", cnt++);
+          })
+          
+          return this.number * 3;
+        }
+      }
+    })
+
+    // methods-good
+    const vue_methods_good = new Vue({
+      el: "#app-methods-good",
+      data: {
+        number: 0,
+        msg: ['퇴','근','하','고','싶','다']
+      },
+      methods: {
+        calcNumber: function(){
+          console.log("plusNumber");
+
+          return this.msg[this.number % 6];
+        }
+      }
+    })
+  </script>
+</body>
+</html>

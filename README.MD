@@ -12,9 +12,10 @@ __1. Git : Only Use Terminal__
 >22.01.11 깃 공부끝   
 
 __2. Vue2 Study : not set__   
->n
->o
->t
+>I hope cdn style because will not use many resource in my idea
+>
+>not ready for study   
+>I don't have plan
 
 
 
