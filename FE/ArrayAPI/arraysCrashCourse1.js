@@ -75,7 +75,46 @@ const ages = [33, 12, 20, 16, 5, 54, 21, 44, 61, 13, 15, 45, 25, 64, 32];
 // console.log(sortedCompanies);
 
 // Sort ages
-const sortAges = ages.sort();
-console.log(sortAges)
+// const sortAges = ages.sort();
+// console.log(sortAges)
+
+// ? low overhead  : company start year sort
+// const sortArr = companies.map((com, i) => {
+//   return { idx: i, year: com.start }
+// })
+// console.log(sortArr)
 
 //  5.ES5 reduce
+// let ageSum = 0;
+// for (let i = 0; i < ages.length; i++) {
+//   ageSum += ages[i];
+// }
+
+// let ageSum = ages.reduce((total, age) => total + age, 0);
+
+// const totalYears = companies.reduce(function (total, company) {
+//   return total + (company.end - company.start);
+// }, 0)
+
+// const totalYears = companies.reduce((total, company) => total + (company.end - company.start), 0)
+
+// console.log(ageSum);
+
+// console.log(totalYears);
+
+// combine methods
+// const combined = ages
+//   .map(age => age * 2)
+//   .filter(age => age >= 40)
+//   .reduce((a, b) => a + b, 0);
+//   ;
+
+// console.log(combined)
+
+const sortArr = ages.sort((a, b) => {
+  console.log(a, b)
+  return a - b;
+});
+
+console.log(ages);
+console.log(sortArr);
