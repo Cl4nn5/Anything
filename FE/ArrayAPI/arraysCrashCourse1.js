@@ -118,3 +118,13 @@ const sortArr = ages.sort((a, b) => {
 
 console.log(ages);
 console.log(sortArr);
+
+
+const fruits = 'apple, melon, banana, cherry';
+
+console.log(fruits.split(','));
+
+
+let str = 'hi';
+let str2 = new String('hi');
+console.log(str, str2)

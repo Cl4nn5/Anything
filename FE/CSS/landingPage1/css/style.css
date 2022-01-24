@@ -1,0 +1,53 @@
+body{
+  margin: 0;
+  padding: 0;
+  height: 3000px;
+}
+
+section:first-of-type{
+  height: 400px;
+  /* background-image: url(../../../../../../../../900_Play/images/twelve_Ame.gif); */
+  background-image: url(../img/twelve_Ame.gif);
+  background-size: cover;
+  background-color: yellow;
+}
+
+.row{
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.photo{
+  position: absolute;
+  top: 100px;
+}
+
+h1{
+  font-size: 7em;
+  width: 258px;
+  position: absolute;
+  left: 0;
+  animation: slideText 1.5s ease-out;
+}
+
+@keyframes slideText {
+  from{
+    left: -300px;
+    opacity: 0;
+  }
+  to{
+    left: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes disapperText {
+  from{
+    left: 0;
+    opacity: 1;
+  }
+  to{
+    left: -300px;
+    opacity: 0;
+  }
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <section>
+    <div class="row">
+      <h1 id="textMsg">Hello, Ame!</h1>
+
+      <div class="photo">대충 이미지 자리</div>
+      <audio id="soundKnock" src="sound/knockknock.mp3"></audio>
+
+    </div>
+  </section>
+
+
+  <script>
+    let mainText = document.getElementById('textMsg');
+    let soundKnock = document.getElementById('soundKnock');
+    // soundKnock.volume = 0.2;
+
+    window.addEventListener("scroll",()=>{
+      let value = window.scrollY;
+
+      if(value >= 250){
+        mainText.style.animation = "disapperText 1s forwards"
+        soundKnock.play();
+      }else{
+        mainText.style.animation = "slideText 1s forwards"
+      }
+    })
+  </script>
+</body>
+
+</html>

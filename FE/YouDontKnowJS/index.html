@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="module">
+    import { product, sum } from "./utility.js";
+
+    console.log(product(1, 2))
+    console.log(sum(1, 2))
+
+    console.log(
+      typeof 42,
+      typeof "42",
+      typeof undefined,
+      typeof null,
+      typeof {},
+      typeof [],
+      typeof Symbol
+    )
+
+    // const DEBUG = "디버그 모드"
+
+    // console.log(typeof DEBUG)
+
+    if (typeof DEBUG !== "undefined") {
+      console.log("디버깅 시작!!")
+    }
+
+    // if(DEBUG){
+    //   console.log("디버깅 시작")
+    // }
+
+  </script>
+
+
+</head>
+
+<body>
+
+  <script>
+    // Colser : Let
+    let countSeconds = ((time) => {
+      for (var i = 0; i < time; i++) {
+        setTimeout(() => {
+          console.log(i);
+        }, i * 1000);
+        
+      }
+    })(5)
+
+  </script>
+
+  <script>
+    // (() => {
+    //   function FeatureXYZ() {
+    //     console.log("여기는 FeatureXYZ 입니다.");
+    //   }
+
+    //   function doSomeThingCool() {
+    //     let helper = (typeof FeatureXYZ !== 'undefined') ?
+    //       FeatureXYZ :
+    //       function () {
+    //         console.log("this is helper");
+    //       };
+    //     let val = helper()
+    //   }
+    //   doSomeThingCool();
+    // })();
+
+
+    function FeatureXYZ() {
+      console.log("Feature")
+      return 123;
+    }
+
+
+    function doSomeThingCool(FeatureXYZ) {
+      var helper = FeatureXYZ ||
+        function () {
+          console.log("else 구역")
+        };
+      let val = helper();
+    }
+
+    doSomeThingCool(FeatureXYZ)
+
+    // Lexical Scope
+    let foo = () => {
+      let a = 12;
+      let bar = () => {
+        console.log(a)
+      }
+      bar();
+    }
+
+    foo()
+
+
+  </script>
+
+
+</body>
+
+</html>
