@@ -13,13 +13,14 @@
     console.log(sum(1, 2))
 
     console.log(
-      typeof 42,
-      typeof "42",
-      typeof undefined,
-      typeof null,
-      typeof {},
-      typeof [],
-      typeof Symbol
+      typeof 42,  //  number
+      typeof "42",  //  string
+      typeof undefined, //  undefined
+      typeof null,  //  object & falsy
+      typeof {},  //  object  & true
+      typeof [],  //  object  & true
+      typeof Symbol,  //  function
+      typeof Symbol() //  symbol
     )
 
     // const DEBUG = "디버그 모드"
@@ -32,7 +33,7 @@
 
     // if(DEBUG){
     //   console.log("디버깅 시작")
-    // }
+    // }  // 에러 발생
 
   </script>
 
@@ -51,6 +52,24 @@
         
       }
     })(5)
+
+    const symId = Symbol("id")
+    const symTemp = {
+      id : 1,
+      [symId] : 10,
+    }
+
+    console.log(symTemp)
+    
+    const x = () => {
+      const a = Symbol('a');
+      return {
+        [a] : 10,
+        b : a
+      }
+    }
+
+    const y = x();
 
   </script>
 
