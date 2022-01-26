@@ -1,64 +1,34 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <!-- ! <script src="../../../../../../lib/vue.js"></script> -->
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <style>
-
-    :root{
-      --slideWidth : 10rem;
-      --slideHeight : 10rem;
-    }
-    .item {}
-
-    .circle>img {
-      border: 1px solid blue;
-      border-radius: 50%;
-      padding: 10px;
-      width: 10rem;
-      height: 10rem;
-      animation: slideImg 0.6s;
-    }
-
-    @keyframes slideImg {
-      from {
-        padding: 20px;
-        width: calc(var(--slideWidth) + 50%);
-        background-color: red;
-        border: 2px solid purple;
-      }
-      25% {
-        padding: 1rem;
-        width: 1rem;
-      }
-
-      to {
-        padding: 10px;
-        width: calc(var(--slideWidth));
-      }
-    }
-  </style>
+  
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <!-- TODO create modal APP -->
   <div id="app">
     <section>
       <h3>제목</h3>
       <div class="circle">
-        <img src="../../Assets/Images/춘식이_얼굴.jpg" alt="춘식이_얼굴" width="100" height="100" @click="imgClick">
+        <img src="../../Assets/Images/춘식이_얼굴.jpg" alt="춘식이_얼굴" id="character-logo" class="slideIn" width="100"
+          height="100" ref="charLogo" @click="imgClick">
       </div>
       <div>
         <div class="item1">
           <label for="todo-list">Today TODO : </label>
-          <input type="text" list="todoList" ref="todoList" id="todo-list" v-model="itemVal" >
+          <input type="text" list="todoList" ref="todoList" id="todo-list" v-model="itemVal">
         </div>
-        <div class="item2" ref="context" id="context">item</div>
+        <div class="item2 textbox" ref="context" id="context">
+          <span class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod voluptatem adipisci
+            placeat
+            numquam soluta laboriosam, nostrum architecto accusamus voluptates nulla!</span>
+        </div>
       </div>
     </section>
 
@@ -75,31 +45,31 @@
   <script>
     const vm = new Vue({
       el: "#app",
-      data:{
-        todoList:[],
+      data: {
+        todoList: [],
         itemVal: '',
       },
       methods: {
-        imgClick(){
+        imgClick() {
           this.$refs.todoList.focus();
+          this.$refs.context.css
           this.itemVal = 'item5'
         }
       },
-      watch:{
-        itemVal(newVal){
-          if(this.todoList.find( el => el === newVal)){
-            this.$refs.context.innerHTML = `<span style="color:blue;">좋은 선택입니다.</span>`
-          }else{
-            this.$refs.context.innerHTML = `<span style="color:red;">옳지 않은 문장입니다.</span>`
+      watch: {
+        itemVal(newVal) {
+          if (this.todoList.find(el => el === newVal)) {
+            this.$refs.context.innerHTML = `<span class="desc suc">좋은 선택입니다.</span>`
+          } else {
+            this.$refs.context.innerHTML = `<span class="desc err">옳지 않은 문장입니다.</span>`
           }
         }
       },
       created() {
-        this.todoList = ['item1','item2','item3','item4','item5']
+        this.todoList = ['item1', 'item2', 'item3', 'item4', 'item5']
         this.itemVal = this.todoList[0]
       }
     })
   </script>
 </body>
-
 </html>
