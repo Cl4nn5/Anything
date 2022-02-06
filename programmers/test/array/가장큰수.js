@@ -10,13 +10,18 @@
 */
 
 function solution(numbers) {
-  var answer = 'wtf';
-  answer.split('')
+  var answer = '';
 
-  return answer;
+  answer = numbers
+    .map((a) => String(a))
+    .sort((a, b) => (b + a) - (a + b))
+    .join('');
+  
+  return Number(answer) === 0 ? "0" : answer;
 }
 
 const numbers = [6,10,2]
+const numbers2 = [0,0,0]
 
 console.log(
   solution(numbers)
