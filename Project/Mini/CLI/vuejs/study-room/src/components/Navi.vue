@@ -1,7 +1,12 @@
 <template>
   <div class="navigation">
     <ul>
-      <li class="list active" v-for="(item, idx) in list" :key="idx">
+      <li
+        class="list"
+        :class="{active:item.isSelected === true}"
+        v-for="(item, idx) in list"
+        :key="idx"
+        @click="selectItem(item, idx)">
         <a :href="'#'+idx">
           <div class="icon" v-html="item.icon">
           </div>
@@ -23,27 +28,38 @@ export default {
       list: []
     }
   },
+  methods: {
+    selectItem(item){
+      this.list.forEach(el => el.isSelected = false);
+      item.isSelected = true;
+    }
+  },
   created() {
     this.list = [
       {
         icon: '<ion-icon name="home-outline"></ion-icon>',
-        text: 'Home'
+        text: 'Home',
+        isSelected: true,
       },
       {
         icon: '<ion-icon name="person-outline"></ion-icon>',
-        text: 'Profile'
+        text: 'Profile',
+        isSelected: false,
       },
       {
         icon: '<ion-icon name="chatbox-outline"></ion-icon>',
-        text: 'Message'
+        text: 'Message',
+        isSelected: false,
       },
       {
         icon: '<ion-icon name="camera-outline"></ion-icon>',
-        text: 'Photos'
+        text: 'Photos',
+        isSelected: false,
       },
       {
         icon: '<ion-icon name="settings-outline"></ion-icon>',
-        text: 'Setting'
+        text: 'Setting',
+        isSelected: false,
       },
     ]
   },
@@ -54,6 +70,7 @@ export default {
   $liLength: 5;
   $clr: #000000;
   $menuColor: #74c0fc;
+  $indicatorLeft: 7.5%;
   
   .navigation{
     background-color: $menuColor;
@@ -124,12 +141,18 @@ export default {
           // transform: translateY(1.5rem);
         }
       
-        // &:nth-child(1).active ~ .indicator{
-        //   transform: translateX(calc(100%/$liLength * 0));
-        // }
-        &:nth-child(2).active ~ .indicator{
-          transform: translateX(calc((70px * 1.95)));
+      @for $i from 0 through 4 {
+        &:nth-child(#{$i+1}).active ~ .indicator{
+          left: $indicatorLeft + (20% * $i)
         }
+      }
+      
+        // &:nth-child(1).active ~ .indicator{
+        //   left: $indicatorLeft + 20%
+        // }
+        // &:nth-child(2).active ~ .indicator{
+        //   transform: translateX(calc((70px * 1)));
+        // }
       }
     }
   }
@@ -137,7 +160,7 @@ export default {
   .indicator{
     position: absolute;
     top: -2.75rem;
-    left: 1.5rem;
+    left: $indicatorLeft;
     width: 3rem;
     height: 3rem;
     background-color: #29fd53;
