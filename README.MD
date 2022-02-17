@@ -2,8 +2,9 @@
 ### 형식
 성취 | 제목  | 목표
 -----| ------|------
-- [x] | Git   | Only Use Terminal
-- [ ] | Vue2  | life Cycle & slot   
+- [x] | Git      | Only Use Terminal
+- [ ] | js & ES6 | you don't know js & mordern js deep dive
+- [ ] | Vue2     | life Cycle & slot   
 <!-- - [ ]  -->
 
 __1. Git : Only Use Terminal__   
