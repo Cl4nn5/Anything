@@ -172,7 +172,7 @@ export default {
       content: '';
       position: absolute;
       top: 82.5%;
-      left: -0.75rem;
+      left: -25.25%;
       width: 1.1rem;
       height: 0.75rem;
       background: $menuColor;
