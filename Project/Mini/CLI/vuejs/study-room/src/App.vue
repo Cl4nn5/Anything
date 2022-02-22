@@ -9,8 +9,8 @@
       a   b
       c   d
     -->
-    <Loader :isShow="true" />
-    <div>검색</div>
+    <Loader :isShow="loader" />
+    <div @click="search">검색</div>
     <div>정보</div>
     <div>목록1</div>
     <div>목록2</div>
@@ -41,11 +41,24 @@ export default {
         grant: 'S',
         name : '',
         age : '',
-      }
+      },
+      loader: true,
     }
+  },
+  methods: {
+    search(){
+      this.loader = true;
+
+      // 추후에 axios 연동할 예정
+      setTimeout( () => {this.loader = false}, 500)
+
+    },
   },
   created() {
     this.isTest = (this.userInfo.name.toUpperCase() === 'ADMIN') && true
+    setTimeout(() => {
+      this.loader = false;
+    }, 1000);
   },
 }
 </script>

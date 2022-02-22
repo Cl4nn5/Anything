@@ -44,8 +44,10 @@ export default {
   },
   watch:{
     isShow(newVal){
-      if(newVal){
-        // this.$refs.loaderSection.style
+      if(!newVal){
+        this.$refs.loaderSection.style.zIndex = -1;
+      }else {
+        this.$refs.loaderSection.style.zIndex = 9999;
       }
     },
   },
@@ -64,6 +66,8 @@ export default {
     background: inherit;
     animation: animateBg 5s linear infinite;
     z-index: 2000;
+
+    // transition: opacity 1.5s;
 
     @keyframes animateBg {
       0%{
