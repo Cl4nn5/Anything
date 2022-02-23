@@ -12,7 +12,6 @@ function solution(answers) {
 
   const answerCntArr = GIVERS.map(giver => answers.filter((as, idx) => as === giver[idx % giver.length]).length)
 
-  
   let temp = answerCntArr.map((el, idx) => (el === Math.max(...answerCntArr)) ? answer.push(idx+1) : 0 );
   // console.log(answerCntArr);
   console.log(temp);
