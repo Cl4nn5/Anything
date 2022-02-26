@@ -1,11 +1,9 @@
 function solution(brown, yellow) {
-
   //  가로 길이가 세로길이보다 이상이어야한다.
-  //  [가로, 세로]
+  //  세로 2칸, 가로 2칸 제외하면 yellow Count
   var answer = [];
 
   let totalCnt = brown + yellow;
-  const caseArr = [];
 
   for (let col = 3; col <= totalCnt; col++) {
     let row = totalCnt / col;
