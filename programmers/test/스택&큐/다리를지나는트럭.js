@@ -1,31 +1,28 @@
 function solution(bridge_length, weight, truck_weights) {
   let time = 0;
 
-  const watingTruck = Array.from(truck_weights);
-  const truckOnBridge = [];
-  const truckAfterCross = [];
-  // ! 트럭의 무개와 개수
+  const bridge = [];
+  let bridgeWeight = 0;
+  // ! FIFO : bridge
   // 1. 대기 트럭이 다리에 탄다. : 1초
-  // 2. 트럭의 이동시간 : 다리 길이
+  // 2. 트럭의 이동 행위란 => [truck_weights.shift, bridge.push, bridge.shift,  time{탑승:1, 이동시간:다리길이}]
 
-  do {
-    let tempTruck = truck_weights.shift()
-    truckOnBridge.push(tempTruck);
-    
-    time++;
-  } while (truckOnBridge.length !== 0) {
-    console.log(truckOnBridge.length);
-    let weightOnBridge = truckOnBridge.reduce((sum, cur) => sum + cur, 0);
-    if (weightOnBridge <= weight) {
-      truckOnBridge.push(truck_weights.shift());
-      time += bridge_length;
-    } else {
-      truckOnBridge.shift();
+  while (truck_weights.length > 0 ) {
+    time++; // 다리에 대기트럭 입차
+    if (bridge.length === bridge_length) {
+      bridgeWeight -= bridge.shift(); // 트럭 하차
     }
-  };
-  
 
-  return time;
+    if (bridgeWeight + truck_weights[0] > weight) {
+      bridgeWeight -= bridge.shift(); // 트럭 하차
+      continue;
+    }
+    let truckWeight = truck_weights.shift();
+    bridge.push(truckWeight); // 다리에 트럭 입차
+    bridgeWeight += truckWeight;
+  };
+
+  return time + bridge_length;
 }
 
 const testCase = [
