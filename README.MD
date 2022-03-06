@@ -2,10 +2,13 @@
 ### 형식
 성취 | 제목  | 목표
 -----| ------|------
-- [x] | Git      | Only Use Terminal
-- [ ] | js & ES6 | you don't know js & mordern js deep dive
-- [ ] | Vue2     | life Cycle & slot   
+- [x] | Git         | Only Use Terminal
+- [ ] | js & ES6    | you don't know js & mordern js deep dive
+- [ ] | Vue2        | life Cycle & slot   
+- [x] | Flex & Grid | Css
 <!-- - [ ]  -->
+
+`진행중 :  & ES6`
 
 __1. Git : Only Use Terminal__   
 >[참고사이트 : Click Me][GitYoutubeLink]   
@@ -18,7 +21,8 @@ __2. Vue2 Study : not set__
 >not ready for study   
 >I don't have plan
 
-
+__3. CSS : Flex & Grid Study__
+> [참고사이트: Flex & Grid Game][FlexGridStudy]
 
 [GitYoutubeLink]: https://www.youtube.com/watch?v=3fUbBnN_H2c
-
+[FlexGridStudy]: https://codingfantasy.com/
