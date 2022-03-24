@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue List</title>
+  <script src="../assets/vue.js"></script>
+  <script async src="vList.js"></script>
+
+  <script type="text/x-template" id="tpl-v-list">
+    <div>
+      <p>Start</p>
+      <slot name="item_slot_position">리스트 구역에 값이 없습니다</slot><br/>
+      <slot name="default">텍스트 구역에 값이 없습니다</slot>
+      <p>End</p>
+    </div>
+  </script>
+
+  <script type="text/x-template" id="tpl-v-item">
+    <div>{{returnMsg}}</div>
+    <!-- <section class="flexSection">
+    </section> -->
+  </script>
+
+  <style>
+    .flexSection {
+      display: flex;
+      width: 50%;
+      justify-content: space-around;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Target: list component 안에 item component 담기 -->
+  <div id="app">
+    <div>
+      <h3>Slot 영역</h3>
+      <cmp-list v-slot:default :list="'header'">
+        'hello'
+      </cmp-list>
+      <cmp-list :list="list" v-slot:item_slot_position>
+        <cmp-item v-for="(item, idx) in list" :id="item.id" :name="item.name" :key=`${item.name}_${item.id}` />
+      </cmp-list>
+    </div>
+    {{name}}
+  </div>
+
+</body>
+
+</html>
