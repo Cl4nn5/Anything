@@ -24,5 +24,10 @@ __2. Vue2 Study : not set__
 __3. CSS : Flex & Grid Study__
 > [참고사이트: Flex & Grid Game][FlexGridStudy]
 
+## 가져야 할 마인드
+*코로나, 야근, 건강문제로 쉬었음*  
+*앞으로는 스스로에게 더 충실하고...*  
+
+
 [GitYoutubeLink]: https://www.youtube.com/watch?v=3fUbBnN_H2c
 [FlexGridStudy]: https://codingfantasy.com/
